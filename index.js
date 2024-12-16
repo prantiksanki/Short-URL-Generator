@@ -22,6 +22,7 @@ const {restrictToLoginUserOnly , checkAuth} = require("./middlewares/auth")
 app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));  // Form and JSON both data supports 
 app.use(express.json());
+
 app.use("/url" , restrictToLoginUserOnly ,urlRoute) ;
 app.use("/user" , userRoute) ; 
 app.use("/" , checkAuth, staticRoute)
@@ -34,6 +35,7 @@ connectToMongoDB("mongodb://localhost:27017/short-url")
 
 
 // For EJS
+
 // app.get("/test" , async (req,res) =>
 // {
 //     const allUrls = await URL.find({});
